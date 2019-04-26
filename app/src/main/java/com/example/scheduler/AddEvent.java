@@ -19,6 +19,7 @@ import com.google.gson.JsonParser;
 public class AddEvent extends AppCompatActivity {
 
     private List<Event> calendar = new ArrayList<Event>();
+    private List<NamedEvent> namedCalendar = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,8 @@ public class AddEvent extends AppCompatActivity {
                     Date date = new Date(getNumberIn(R.id.eventMonth), getNumberIn(R.id.eventDay), getNumberIn(R.id.eventYear));
                     String name = getTextIn(R.id.eventName);
 
-                    Event newEvent = new Event(name, date, startTime, endTime);
+                    Event newNamedEvent = new NamedEvent(name, date, startTime, endTime);
+                    Event newEvent = new Event(date, startTime, endTime);
 
                     int putIndex = 0;
 

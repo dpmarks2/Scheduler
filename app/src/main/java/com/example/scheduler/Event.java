@@ -4,13 +4,12 @@ package com.example.scheduler;
  * Private class to store each event which the user puts into their calendar
  */
 public class Event implements Comparable<Event> {
-    private String name;
+
     private Date date;
     private Time startTime;
     private Time endTime;
 
-    public Event(String name, Date date, Time startTime, Time endTime) {
-        this.name = name;
+    public Event(Date date, Time startTime, Time endTime) {
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;

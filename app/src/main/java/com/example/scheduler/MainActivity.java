@@ -20,6 +20,7 @@ import com.google.zxing.client.android.Intents;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,12 +38,13 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.jsonCalendar)).setText(jsonCalendar);
 
-        //QRGEncoder qrgEncoder = new QRGEncoder(jsonCalendar, null, QRGContents.Type.TEXT, smallerDimension);
+
 
         findViewById(R.id.addEvent).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddEvent.class);
+                intent.putExtra("calendar", jsonCalendar);
                 startActivity(intent);
             }
         });
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, qr_activity.class);
-                    intent.putExtra("JSON", "test");
+                intent.putExtra("calendar", jsonCalendar);
                     startActivity(intent);
             }
         });
