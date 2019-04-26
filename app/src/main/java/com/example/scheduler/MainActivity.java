@@ -20,7 +20,11 @@ import com.google.zxing.client.android.Intents;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import androidmads.library.qrgenearator.QRGEncoder;
+
 public class MainActivity extends AppCompatActivity {
+
+    //private static final Object QRGContents = ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.jsonCalendar)).setText(jsonCalendar);
 
+        //QRGEncoder qrgEncoder = new QRGEncoder(jsonCalendar, null, QRGContents.Type.TEXT, smallerDimension);
+
         findViewById(R.id.addEvent).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
             }
         });
 
