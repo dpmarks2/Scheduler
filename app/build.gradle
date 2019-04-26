@@ -1,7 +1,12 @@
 apply plugin: 'com.android.application'
 
+repositories {
+    jcenter()
+}
+
 android {
     compileSdkVersion 28
+    buildToolsVersion '23.0.2'
     defaultConfig {
         applicationId "com.example.scheduler"
         minSdkVersion 15
@@ -33,4 +38,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.journeyapps:zxing-android-embedded:3.0.2@aar'
     implementation 'com.google.zxing:core:3.2.0'
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+
 }
