@@ -21,4 +21,11 @@ public class Time implements Comparable<Time> {
 
         return 0;
     }
+
+    public String toString() {
+        if(minute < 10) {
+            return hour + ":0" + minute;
+        }
+        return hour + ":" + minute;
+    }
 }

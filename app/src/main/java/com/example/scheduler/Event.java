@@ -5,14 +5,26 @@ package com.example.scheduler;
  */
 public class Event implements Comparable<Event> {
 
-    private Date date;
-    private Time startTime;
-    private Time endTime;
+    protected Date date;
+    protected Time startTime;
+    protected Time endTime;
 
     public Event(Date date, Time startTime, Time endTime) {
         this.date = date;
         this.startTime = startTime;
         this.endTime = endTime;
+    }
+
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public Time getEndTime() {
+        return endTime;
+    }
+
+    public Date getDate() {
+        return date;
     }
 
     /**
@@ -31,5 +43,11 @@ public class Event implements Comparable<Event> {
         }
 
         return 0;
+    }
+
+    public String toString() {
+        String rtn = date.toString()
+                + "\n" + startTime.toString() + "-" + endTime.toString();
+        return rtn;
     }
 }

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.lang.reflect.Type;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,8 @@ public class AddEvent extends AppCompatActivity {
             calendar = gson.fromJson(jsonCalendar, type);
         }
 
+        updateCalendar();
+
         findViewById(R.id.home).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +55,16 @@ public class AddEvent extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        findViewById(R.id.clearCalendar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calendar = new ArrayList<Event>();
+                namedCalendar = new ArrayList<NamedEvent>();
+                updateCalendar();
+            }
+        });
+
 
         findViewById(R.id.addEvent).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +85,7 @@ public class AddEvent extends AppCompatActivity {
                                         + " " + startHour + ":" + startMinute + ":00";
 
 
-                    Event newNamedEvent = new NamedEvent(name, date, startTime, endTime);
+                    NamedEvent newNamedEvent = new NamedEvent(name, date, startTime, endTime);
                     Event newEvent = new Event(date, startTime, endTime);
 
                     int putIndex = 0;
@@ -81,6 +94,9 @@ public class AddEvent extends AppCompatActivity {
                         putIndex++;
                     }
                     calendar.add(putIndex, newEvent);
+                    namedCalendar.add(putIndex, newNamedEvent);
+
+                    updateCalendar();
 
                 } catch (Exception e) {
                     System.out.println("Invalid inputs");
@@ -96,6 +112,16 @@ public class AddEvent extends AppCompatActivity {
 
     private int getNumberIn(final int editor) {
         return Integer.parseInt(getTextIn(editor));
+    }
+
+    private void updateCalendar() {
+        String calendarPrint = "";
+
+        for (Event event : namedCalendar) {
+            calendarPrint += event.toString() + "\n";
+        }
+
+        ((TextView) findViewById(R.id.calendarView)).setText(calendarPrint);
     }
 
 }
