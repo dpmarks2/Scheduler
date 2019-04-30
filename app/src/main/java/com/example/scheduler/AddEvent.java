@@ -30,7 +30,7 @@ public class AddEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
-        calendar = new ArrayList<Event>();
+        calendar = new ArrayList<>();
 
         Intent intent = getIntent();
         String jsonCalendar = intent.getStringExtra("calendar");
@@ -66,8 +66,8 @@ public class AddEvent extends AppCompatActivity {
         findViewById(R.id.clearCalendar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calendar = new ArrayList<Event>();
-                namedCalendar = new ArrayList<NamedEvent>();
+                calendar = new ArrayList<>();
+                namedCalendar = new ArrayList<>();
                 updateCalendar();
             }
         });
@@ -86,20 +86,12 @@ public class AddEvent extends AppCompatActivity {
                     Date date = new Date(getNumberIn(R.id.eventMonth), getNumberIn(R.id.eventDay), getNumberIn(R.id.eventYear));
                     String name = getTextIn(R.id.eventName);
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
-
-                    String start = getNumberIn(R.id.eventDay) + "-" + getNumberIn(R.id.eventMonth) + "-" + getNumberIn(R.id.eventYear)
-                                        + " " + startHour + ":" + startMinute + ":00";
-                    String end = getNumberIn(R.id.eventDay) + "-" + getNumberIn(R.id.eventMonth) + "-" + getNumberIn(R.id.eventYear)
-                            + " " + endHour + ":" + endMinute + ":00";
-
-
                     NamedEvent newNamedEvent = new NamedEvent(name, date, startTime, endTime);
                     Event newEvent = new Event(date, startTime, endTime);
 
                     int putIndex = 0;
 
-                    while (putIndex < calendar.size() && newEvent.compareTo(calendar.get(putIndex)) > 0) {
+                    while (putIndex < calendar.size() && newEvent.compareTo(calendar.get(putIndex)) < 0) {
                         putIndex++;
                     }
                     calendar.add(putIndex, newEvent);
@@ -127,7 +119,7 @@ public class AddEvent extends AppCompatActivity {
         String calendarPrint = "";
 
         for (Event event : namedCalendar) {
-            calendarPrint += event.toString() + "\n";
+            calendarPrint += event.toString() + "\n\n";
         }
 
         ((TextView) findViewById(R.id.calendarView)).setText(calendarPrint);
