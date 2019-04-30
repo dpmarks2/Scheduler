@@ -34,11 +34,17 @@ public class AddEvent extends AppCompatActivity {
 
         Intent intent = getIntent();
         String jsonCalendar = intent.getStringExtra("calendar");
+        String jsonNamedCalendar = intent.getStringExtra("namedCalendar");
 
         if (jsonCalendar != null) {
             Gson gson = new Gson();
             Type type = new TypeToken<List<Event>>(){}.getType();
             calendar = gson.fromJson(jsonCalendar, type);
+        }
+        if (jsonNamedCalendar != null) {
+            Gson gson = new Gson();
+            Type type = new TypeToken<List<NamedEvent>>(){}.getType();
+            namedCalendar = gson.fromJson(jsonNamedCalendar, type);
         }
 
         updateCalendar();
@@ -49,8 +55,9 @@ public class AddEvent extends AppCompatActivity {
                 Intent intent = new Intent(AddEvent.this, MainActivity.class);
 
                 String jsonCalendar = new Gson().toJson(calendar);
-                System.out.println(jsonCalendar);
+                String jsonNamedCalendar = new Gson().toJson(namedCalendar);
                 intent.putExtra("calendar", jsonCalendar);
+                intent.putExtra("namedCalendar", jsonNamedCalendar);
 
                 startActivity(intent);
             }

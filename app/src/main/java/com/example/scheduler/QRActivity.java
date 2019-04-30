@@ -23,6 +23,7 @@ public class QRActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String qrJson = intent.getStringExtra("calendar");
+        String namedCalendar = intent.getStringExtra("namedCalendar");
 
         ImageView qr = (ImageView) findViewById(R.id.qrCode);
 
@@ -42,6 +43,7 @@ public class QRActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(QRActivity.this, MainActivity.class);
                 intent.putExtra("calendar", qrJson);
+                intent.putExtra("namedCalendar", namedCalendar);
                 startActivity(intent);
             }
         });

@@ -45,12 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         String jsonCalendar = intent.getStringExtra("calendar");
         String compareCalendar = intent.getStringExtra("compareCalendar");
+        String namedCalendar = intent.getStringExtra("namedCalendar");
 
-        calendar = ((TextView) findViewById(R.id.jsonCalendar));
-        calendar.setText(compareCalendar);
-
-        textViewName = (TextView) findViewById(R.id.textViewName);
-        textViewAddress = (TextView) findViewById(R.id.textViewAddress);
         qrScan = new IntentIntegrator(this);
 
         findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
@@ -58,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ScanActivity.class);
                 intent.putExtra("calendar", jsonCalendar);
+                intent.putExtra("namedCalendar", namedCalendar);
                 startActivity(intent);
             }
         });
@@ -67,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddEvent.class);
                 intent.putExtra("calendar", jsonCalendar);
+                intent.putExtra("namedCalendar", namedCalendar);
                 startActivity(intent);
             }
         });
@@ -76,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, QRActivity.class);
                 intent.putExtra("calendar", jsonCalendar);
+                intent.putExtra("namedCalendar", namedCalendar);
                 startActivity(intent);
             }
         });

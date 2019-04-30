@@ -24,6 +24,7 @@ public class ScanActivity extends AppCompatActivity {
     private static final int REQUEST_CAMERA = 1;
     private ZXingScannerView mScannerView;
     private String jsonCalendar;
+    private String namedCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,8 @@ public class ScanActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         jsonCalendar = intent.getStringExtra("calendar");
+        namedCalendar = intent.getStringExtra("namedCalendar");
+
 
         IntentIntegrator integrator = new IntentIntegrator(ScanActivity.this); // `this` is the current Activity
         integrator.initiateScan();
@@ -50,6 +53,7 @@ public class ScanActivity extends AppCompatActivity {
                 Intent intent = new Intent(ScanActivity.this, CompareCalendars.class);
                 intent.putExtra("compareCalendar", cal);
                 intent.putExtra("calendar", jsonCalendar);
+                intent.putExtra("namedCalendar", namedCalendar);
                 startActivity(intent);
             }
         } else {

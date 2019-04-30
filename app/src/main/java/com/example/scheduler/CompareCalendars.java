@@ -18,6 +18,7 @@ public class CompareCalendars extends AppCompatActivity {
     private List<Event> myList;
     private String compareCalendar;
     private List<Event> otherList;
+    private String namedCalendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class CompareCalendars extends AppCompatActivity {
         Intent intent = getIntent();
         myCalendar = intent.getStringExtra("calendar");
         compareCalendar = intent.getStringExtra("compareCalendar");
+        namedCalendar = intent.getStringExtra("namedCalendar");
 
         Gson gson = new Gson();
         Type type = new TypeToken<List<Event>>(){}.getType();
@@ -45,6 +47,7 @@ public class CompareCalendars extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(CompareCalendars.this, MainActivity.class);
                 intent.putExtra("calendar", myCalendar);
+                intent.putExtra("namedCalendar", namedCalendar);
                 startActivity(intent);
             }
         });
