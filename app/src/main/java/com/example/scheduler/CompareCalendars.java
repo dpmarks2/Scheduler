@@ -19,6 +19,7 @@ public class CompareCalendars extends AppCompatActivity {
     private String compareCalendar;
     private List<Event> otherList;
     private String namedCalendar;
+    private List<Event> freeTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,10 @@ public class CompareCalendars extends AppCompatActivity {
         if (compareCalendar != null) {
             otherList = gson.fromJson(compareCalendar, type);
         }
+
+        CompareSchedule.syncCalendars(myList, otherList);
+        //CompareSchedule.findFreeTime(myList);
+        freeTime = CompareSchedule.findFreeTime(CompareSchedule.syncCalendars(myList, otherList));
 
         updateCalendar();
 
@@ -79,5 +84,17 @@ public class CompareCalendars extends AppCompatActivity {
             ((TextView) findViewById(R.id.otherCalendar)).setText("No Calendar");
         }
 
+
+        if (freeTime != null && freeTime.size() != 0) {
+            String freeTimeList = "";
+
+            for (Event event : freeTime) {
+                freeTimeList += event.toString() + "\n";
+            }
+
+            ((TextView) findViewById(R.id.comparisonText)).setText(freeTimeList);
+        } else {
+            ((TextView) findViewById(R.id.comparisonText)).setText("No Calendar");
+        }
     }
 }

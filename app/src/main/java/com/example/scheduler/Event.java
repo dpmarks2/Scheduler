@@ -5,9 +5,9 @@ package com.example.scheduler;
  */
 public class Event {
 
-    private Date date;
-    private Time startTime;
-    private Time endTime;
+    protected Date date;
+    protected Time startTime;
+    protected Time endTime;
 
     public Event(Date date, Time startTime, Time endTime) {
         this.date = date;
@@ -38,5 +38,11 @@ public class Event {
         }
 
         return 0;
+    }
+
+    public String toString() {
+        String rtn = date.toString()
+                + "\n" + startTime.toString() + "-" + endTime.toString();
+        return rtn;
     }
 }

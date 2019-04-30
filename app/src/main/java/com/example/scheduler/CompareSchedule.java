@@ -7,7 +7,17 @@ public class CompareSchedule {
     /**
      * Compare two calendars.
      */
-    public List<Event> syncCalendars(List<Event> first, List<Event> second) {
+    public static List<Event> syncCalendars(List<Event> first, List<Event> second) {
+        if (first == null || second == null) {
+            if (first == second) {
+                return null;
+            } else if (first == null) {
+                return second;
+            } else {
+                return first;
+            }
+        }
+
         List<Event> synced = new ArrayList<>();
         List<Event> copyFirst = new ArrayList<>();
         List<Event> copySecond = new ArrayList<>();
@@ -37,6 +47,10 @@ public class CompareSchedule {
      * @return list of free time Events
      */
     public static List<Event> findFreeTime(final List<Event> synced) {
+        if (synced == null) {
+            return null;
+        }
+
         List<Event> freeTime = new ArrayList<Event>();
         for (int i = 0; i < synced.size() - 1; i++) {
             Event firstEvent = synced.get(i);
