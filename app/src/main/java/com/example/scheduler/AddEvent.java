@@ -66,10 +66,12 @@ public class AddEvent extends AppCompatActivity {
                     Date date = new Date(getNumberIn(R.id.eventMonth), getNumberIn(R.id.eventDay), getNumberIn(R.id.eventYear));
                     String name = getTextIn(R.id.eventName);
 
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
 
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yy hh:mm:ss");
                     String start = getNumberIn(R.id.eventDay) + "-" + getNumberIn(R.id.eventMonth) + "-" + getNumberIn(R.id.eventYear)
                                         + " " + startHour + ":" + startMinute + ":00";
+                    String end = getNumberIn(R.id.eventDay) + "-" + getNumberIn(R.id.eventMonth) + "-" + getNumberIn(R.id.eventYear)
+                            + " " + endHour + ":" + endMinute + ":00";
 
 
                     Event newNamedEvent = new NamedEvent(name, date, startTime, endTime);
