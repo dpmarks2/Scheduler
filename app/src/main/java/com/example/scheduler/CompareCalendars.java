@@ -40,8 +40,8 @@ public class CompareCalendars extends AppCompatActivity {
             otherList = gson.fromJson(compareCalendar, type);
         }
 
-        CompareSchedule.syncCalendars(myList, otherList);
-        //CompareSchedule.findFreeTime(myList);
+        //freeTime = CompareSchedule.syncCalendars(myList, otherList);
+        //freeTime = CompareSchedule.findFreeTime(myList);
         freeTime = CompareSchedule.findFreeTime(CompareSchedule.syncCalendars(myList, otherList));
 
         updateCalendar();
@@ -94,7 +94,7 @@ public class CompareCalendars extends AppCompatActivity {
 
             ((TextView) findViewById(R.id.comparisonText)).setText(freeTimeList);
         } else {
-            ((TextView) findViewById(R.id.comparisonText)).setText("No Calendar");
+            ((TextView) findViewById(R.id.comparisonText)).setText(freeTime.toString());
         }
     }
 }
