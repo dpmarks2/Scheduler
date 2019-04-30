@@ -24,7 +24,7 @@ public class CompareSchedule {
         for (int i = 0; i < first.size(); i++) {
             copyFirst.add(first.get(i));
         }
-        for (int j = 0; j < first.size(); j++) {
+        for (int j = 0; j < second.size(); j++) {
             copySecond.add(second.get(j));
         }
         while (copyFirst.size() != 0 || copySecond.size()!= 0) {
@@ -50,15 +50,14 @@ public class CompareSchedule {
         if (synced == null) {
             return null;
         }
-
-        List<Event> freeTime = new ArrayList<Event>();
+        List<Event> freeTime = new ArrayList<>();
         for (int i = 0; i < synced.size() - 1; i++) {
             Event firstEvent = synced.get(i);
             Event secondEvent = synced.get(i + 1);
             if (firstEvent.getDate().compareTo(secondEvent.getDate()) != 0) {
-                Event freeEvent = new Event(firstEvent.getDate(), firstEvent.getEndTime(), secondEvent.getStartTime());
+                Event freeEvent = new Event(firstEvent.getDate(), firstEvent.getEndTime(), new Time(24, 0));
                 synced.add(freeEvent);
-            } else if (firstEvent.getEndTime().compareTo(secondEvent.getStartTime()) != 0.0) {
+            } else if (firstEvent.getEndTime().compareTo(secondEvent.getStartTime()) > 0.0) {
                 Event freeEvent = new Event(firstEvent.getDate(), firstEvent.getEndTime(), secondEvent.getStartTime());
                 synced.add(freeEvent);
             }
