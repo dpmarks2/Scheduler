@@ -8,9 +8,9 @@ public class CompareSchedule {
      * Compare two calendars.
      */
     public List<Event> syncCalendars(List<Event> first, List<Event> second) {
-        List<Event> synced = new ArrayList<Event>();
-        List<Event> copyFirst = new ArrayList<Event>();
-        List<Event> copySecond = new ArrayList<Event>();
+        List<Event> synced = new ArrayList<>();
+        List<Event> copyFirst = new ArrayList<>();
+        List<Event> copySecond = new ArrayList<>();
         for (int i = 0; i < first.size(); i++) {
             copyFirst.add(first.get(i));
         }
