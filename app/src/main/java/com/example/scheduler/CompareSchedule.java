@@ -56,10 +56,10 @@ public class CompareSchedule {
             Event secondEvent = synced.get(i + 1);
             if (firstEvent.getDate().compareTo(secondEvent.getDate()) != 0) {
                 Event freeEvent = new Event(firstEvent.getDate(), firstEvent.getEndTime(), new Time(24, 0));
-                synced.add(freeEvent);
+                freeTime.add(freeEvent);
             } else if (firstEvent.getEndTime().compareTo(secondEvent.getStartTime()) > 0.0) {
                 Event freeEvent = new Event(firstEvent.getDate(), firstEvent.getEndTime(), secondEvent.getStartTime());
-                synced.add(freeEvent);
+                freeTime.add(freeEvent);
             }
         }
         return freeTime;

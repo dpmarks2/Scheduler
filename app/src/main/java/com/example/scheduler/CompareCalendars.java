@@ -63,7 +63,7 @@ public class CompareCalendars extends AppCompatActivity {
             String myCalendarPrint = "";
 
             for (Event event : myList) {
-                myCalendarPrint += event.toString() + "\n";
+                myCalendarPrint += event.toString() + "\n\n";
             }
 
             ((TextView) findViewById(R.id.myCalendar)).setText(myCalendarPrint);
@@ -76,7 +76,7 @@ public class CompareCalendars extends AppCompatActivity {
             String otherCalendarPrint = "";
 
             for (Event event : otherList) {
-                otherCalendarPrint += event.toString() + "\n";
+                otherCalendarPrint += event.toString() + "\n\n";
             }
 
             ((TextView) findViewById(R.id.otherCalendar)).setText(otherCalendarPrint);
@@ -89,7 +89,7 @@ public class CompareCalendars extends AppCompatActivity {
             String freeTimeList = "";
 
             for (Event event : freeTime) {
-                freeTimeList += event.toString() + "\n";
+                freeTimeList += event.toString() + "\n\n";
             }
 
             ((TextView) findViewById(R.id.comparisonText)).setText(freeTimeList);
