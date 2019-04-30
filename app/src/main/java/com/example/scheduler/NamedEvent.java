@@ -7,4 +7,10 @@ public class NamedEvent extends Event {
         super(date, startTime, endTime);
         this.name = name;
     }
+
+    public String toString() {
+        String rtn = name + " " + date.toString()
+                + "\n" + startTime.toString() + "-" + endTime.toString();
+        return rtn;
+    }
 }

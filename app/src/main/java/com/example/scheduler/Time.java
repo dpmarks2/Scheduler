@@ -24,4 +24,11 @@ public class Time {
             return (other.hour - hour) + theDub;
         }
     }
+
+    public String toString() {
+        if(minute < 10) {
+            return hour + ":0" + minute;
+        }
+        return hour + ":" + minute;
+    }
 }

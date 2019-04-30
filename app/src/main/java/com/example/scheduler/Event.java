@@ -1,12 +1,9 @@
 package com.example.scheduler;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 /**
  * Private class to store each event which the user puts into their calendar
  */
-public class Event {
+public class Event implements Comparable<Event> {
 
     private Date date;
     private Time startTime;
@@ -18,22 +15,13 @@ public class Event {
         this.endTime = endTime;
     }
 
-    public Time getStartTime() {
-        return startTime;
-    }
-    public Time getEndTime() {
-        return endTime;
-    }
-    public Date getDate() {
-        return date;
-    }
-
     /**
      * Compares to another event to see which is earlier
      * @param other Another event
-     * @return Amount of hours this event is earlier (if positive)
+     * @return Positive int if this event is earlier
      */
-    public double compareTo(Event other) {
+    @Override
+    public int compareTo(Event other) {
         if (date.compareTo(other.date) != 0) {
             return date.compareTo(other.date);
         }

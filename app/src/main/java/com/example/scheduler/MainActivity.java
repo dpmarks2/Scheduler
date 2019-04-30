@@ -20,12 +20,21 @@ import com.google.zxing.client.android.Intents;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.w3c.dom.Text;
+
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
 
 public class MainActivity extends AppCompatActivity {
 
-    //private static final Object QRGContents = ;
+    private TextView textViewName;
+    private TextView textViewAddress;
+    private TextView calendar;
+    private Button scan;
+
+    private IntentIntegrator qrScan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,33 +44,38 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         String jsonCalendar = intent.getStringExtra("calendar");
+        String compareCalendar = intent.getStringExtra("compareCalendar");
+        String namedCalendar = intent.getStringExtra("namedCalendar");
 
-        ((TextView) findViewById(R.id.jsonCalendar)).setText(jsonCalendar);
+        qrScan = new IntentIntegrator(this);
 
-
+        findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ScanActivity.class);
+                intent.putExtra("calendar", jsonCalendar);
+                intent.putExtra("namedCalendar", namedCalendar);
+                startActivity(intent);
+            }
+        });
 
         findViewById(R.id.addEvent).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddEvent.class);
                 intent.putExtra("calendar", jsonCalendar);
+                intent.putExtra("namedCalendar", namedCalendar);
                 startActivity(intent);
-            }
-        });
-
-        findViewById(R.id.scan).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
 
         findViewById(R.id.qrGenerate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this, qr_activity.class);
+                Intent intent = new Intent(MainActivity.this, QRActivity.class);
                 intent.putExtra("calendar", jsonCalendar);
-                    startActivity(intent);
+                intent.putExtra("namedCalendar", namedCalendar);
+                startActivity(intent);
             }
         });
 

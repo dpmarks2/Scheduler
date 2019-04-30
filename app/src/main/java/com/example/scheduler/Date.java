@@ -5,7 +5,7 @@ public class Date implements Comparable<Date> {
     private int month;
     private int year;
 
-    public Date(int day, int month, int year) {
+    public Date(int month, int day, int year) {
         this.day = day;
         this.month = month;
         this.year = year;
@@ -31,5 +31,9 @@ public class Date implements Comparable<Date> {
         }
 
         return 0;
+    }
+
+    public String toString() {
+        return month + "/" + day + "/" + year;
     }
 }
