@@ -33,10 +33,16 @@ public class CompareSchedule {
     public static List<Event> findFreeTime(final List<Event> synced) {
         List<Event> freeTime = new ArrayList<Event>();
         for (int i = 0; i < synced.size() - 1; i++) {
-            if (synced)
-            if (synced.get(i).getEndTime().compareTo(synced.get(i + 1).getStartTime()) != 0.0) {
-                Event freeEvent = new Event()
+            Event firstEvent = synced.get(i);
+            Event secondEvent = synced.get(i + 1);
+            if (firstEvent.getDate().compareTo(secondEvent.getDate()) != 0) {
+                Event freeEvent = new Event(firstEvent.getDate(), firstEvent.getEndTime(), secondEvent.getStartTime());
+                synced.add(freeEvent);
+            } else if (firstEvent.getEndTime().compareTo(secondEvent.getStartTime()) != 0.0) {
+                Event freeEvent = new Event(firstEvent.getDate(), firstEvent.getEndTime(), secondEvent.getStartTime());
+                synced.add(freeEvent);
             }
         }
+        return freeTime;
     }
 }
