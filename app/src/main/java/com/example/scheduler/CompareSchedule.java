@@ -30,6 +30,12 @@ public class CompareSchedule {
         }
         return synced;
     }
+
+    /**
+     * Finds free time from a synced list of two schedules
+     * @param synced list of events that have been sorted by time already (see above method)
+     * @return list of free time Events
+     */
     public static List<Event> findFreeTime(final List<Event> synced) {
         List<Event> freeTime = new ArrayList<Event>();
         for (int i = 0; i < synced.size() - 1; i++) {
