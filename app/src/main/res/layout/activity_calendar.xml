@@ -12,13 +12,13 @@
         android:id="@+id/calendarTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="28dp"
         android:text="Calendar"
-        android:typeface="serif"
-        android:textStyle="bold"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="50dp"
+        android:textStyle="bold"
+        android:typeface="serif"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -27,6 +27,7 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="324dp"
         android:text="Add Event to Calendar"
         app:layout_constraintBottom_toTopOf="@+id/calendarToHome"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,11 +49,9 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
         android:text="Clear \nCalendar"
-        app:layout_constraintBottom_toBottomOf="@+id/calendarTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/calendarTitle" />
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="356dp" />
 
     <ScrollView
         android:layout_width="0dp"
@@ -64,8 +63,10 @@
         android:fillViewport="true"
         app:layout_constraintBottom_toTopOf="@+id/addToCalendar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarTitle">
+        app:layout_constraintTop_toBottomOf="@+id/calendarTitle"
+        app:layout_constraintVertical_bias="0.092">
 
         <TextView
             android:id="@+id/scrollCalendar"
