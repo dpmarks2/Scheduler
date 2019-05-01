@@ -15,6 +15,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="30dp"
         android:text="Calendar"
+        android:typeface="serif"
+        android:textStyle="bold"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="50dp"
         app:layout_constraintStart_toStartOf="parent"
