@@ -59,6 +59,7 @@ public class CompareCalendars extends AppCompatActivity {
     }
 
     private void updateCalendar() {
+        /*
         if (myList != null && myList.size() != 0) {
             String myCalendarPrint = "";
 
@@ -83,7 +84,7 @@ public class CompareCalendars extends AppCompatActivity {
         } else {
             ((TextView) findViewById(R.id.otherCalendar)).setText("No Calendar");
         }
-
+        */
 
         if (freeTime != null && freeTime.size() != 0) {
             String freeTimeList = "";
@@ -92,9 +93,9 @@ public class CompareCalendars extends AppCompatActivity {
                 freeTimeList += event.toString() + "\n\n";
             }
 
-            ((TextView) findViewById(R.id.comparisonText)).setText(freeTimeList);
+            ((TextView) findViewById(R.id.comparisonScrollText)).setText(freeTimeList);
         } else {
-            ((TextView) findViewById(R.id.comparisonText)).setText(freeTime.toString());
+            ((TextView) findViewById(R.id.comparisonScrollText)).setText(freeTime.toString());
         }
     }
 }
