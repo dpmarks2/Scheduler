@@ -12,7 +12,7 @@
         android:id="@+id/calendarTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="88dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="28dp"
         android:text="Calendar"
         android:textColor="@android:color/holo_red_dark"
@@ -27,7 +27,7 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="324dp"
+        android:layout_marginBottom="8dp"
         android:text="Add Event to Calendar"
         app:layout_constraintBottom_toTopOf="@+id/calendarToHome"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,8 +50,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Clear \nCalendar"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="356dp" />
+        tools:layout_editor_absoluteX="274dp"
+        tools:layout_editor_absoluteY="28dp" />
 
     <ScrollView
         android:layout_width="0dp"
