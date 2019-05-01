@@ -8,16 +8,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Type;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 public class AddEvent extends AppCompatActivity {
@@ -31,6 +25,7 @@ public class AddEvent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
         calendar = new ArrayList<>();
+        namedCalendar = new ArrayList<>();
 
         Intent intent = getIntent();
         String jsonCalendar = intent.getStringExtra("calendar");
@@ -47,12 +42,10 @@ public class AddEvent extends AppCompatActivity {
             namedCalendar = gson.fromJson(jsonNamedCalendar, type);
         }
 
-        updateCalendar();
-
-        findViewById(R.id.home).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.cancel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AddEvent.this, MainActivity.class);
+                Intent intent = new Intent(AddEvent.this, CalendarActivity.class);
 
                 String jsonCalendar = new Gson().toJson(calendar);
                 String jsonNamedCalendar = new Gson().toJson(namedCalendar);
@@ -63,17 +56,10 @@ public class AddEvent extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.clearCalendar).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                calendar = new ArrayList<>();
-                namedCalendar = new ArrayList<>();
-                updateCalendar();
-            }
-        });
 
 
-        findViewById(R.id.addEvent).setOnClickListener(new View.OnClickListener() {
+
+        findViewById(R.id.toCalendar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
@@ -97,7 +83,15 @@ public class AddEvent extends AppCompatActivity {
                     calendar.add(putIndex, newEvent);
                     namedCalendar.add(putIndex, newNamedEvent);
 
-                    updateCalendar();
+
+                    Intent intent = new Intent(AddEvent.this, CalendarActivity.class);
+
+                    String jsonCalendar = new Gson().toJson(calendar);
+                    String jsonNamedCalendar = new Gson().toJson(namedCalendar);
+                    intent.putExtra("calendar", jsonCalendar);
+                    intent.putExtra("namedCalendar", jsonNamedCalendar);
+
+                    startActivity(intent);
 
                 } catch (Exception e) {
                     System.out.println("Invalid inputs");
@@ -113,16 +107,6 @@ public class AddEvent extends AppCompatActivity {
 
     private int getNumberIn(final int editor) {
         return Integer.parseInt(getTextIn(editor));
-    }
-
-    private void updateCalendar() {
-        String calendarPrint = "";
-
-        for (Event event : namedCalendar) {
-            calendarPrint += event.toString() + "\n\n";
-        }
-
-        ((TextView) findViewById(R.id.calendarView)).setText(calendarPrint);
     }
 
 }

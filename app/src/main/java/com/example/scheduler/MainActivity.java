@@ -4,28 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.hardware.Camera;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 import android.widget.TextView;
 
-import com.google.zxing.client.android.Intents;
 import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import androidmads.library.qrgenearator.QRGContents;
-import androidmads.library.qrgenearator.QRGEncoder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //getActionBar().hide();
 
         Intent intent = getIntent();
 
@@ -59,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.addEvent).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.toCalendar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddEvent.class);
+                Intent intent = new Intent(MainActivity.this, CalendarActivity.class);
                 intent.putExtra("calendar", jsonCalendar);
                 intent.putExtra("namedCalendar", namedCalendar);
                 startActivity(intent);

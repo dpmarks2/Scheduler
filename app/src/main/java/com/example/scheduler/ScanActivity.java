@@ -38,6 +38,7 @@ public class ScanActivity extends AppCompatActivity {
 
         IntentIntegrator integrator = new IntentIntegrator(ScanActivity.this); // `this` is the current Activity
         integrator.initiateScan();
+
     }
 
 

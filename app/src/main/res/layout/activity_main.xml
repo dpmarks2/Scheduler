@@ -1,52 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/qrGenerate"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:backgroundTint="@android:color/holo_red_dark"
         android:text="Generate QR"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addEvent" />
+        app:layout_constraintEnd_toStartOf="@+id/scan"
+        app:layout_constraintStart_toEndOf="@+id/toCalendar"
+        app:layout_constraintTop_toTopOf="@+id/toCalendar" />
 
     <TextView
-        android:id="@+id/header"
+        android:id="@+id/header1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:text="QR Scheduler"
-        android:textSize="30sp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Sche"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/addEvent"
+        android:id="@+id/toCalendar"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Add to Calendar"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="Calendar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header" />
+        app:layout_constraintTop_toBottomOf="@+id/header1" />
 
     <Button
         android:id="@+id/scan"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@android:color/holo_red_dark"
         android:text="Scan QR"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qrGenerate" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/qrGenerate" />
+
+    <TextView
+        android:id="@+id/header2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="DUAL"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="75dp"
+        app:layout_constraintStart_toEndOf="@+id/header1"
+        app:layout_constraintTop_toTopOf="@+id/header1" />
 
 </android.support.constraint.ConstraintLayout>
